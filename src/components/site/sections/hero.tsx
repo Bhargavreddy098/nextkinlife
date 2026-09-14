@@ -24,23 +24,10 @@ export function Hero() {
             <HeroCopy />
           </div>
 
-          {/* Visual — Motion-powered service ring */}
+          {/* Visual — free-floating service orbit, no card */}
           <Reveal delay={200} className="relative">
-            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-ink-2/70 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
-              <div
-                className="pointer-events-none absolute inset-0 grid-lines-dark opacity-70"
-                aria-hidden="true"
-              />
-              <div className="aspect-[5/4] w-full sm:aspect-[16/10] lg:aspect-[8/5]">
-                <HeroVisual />
-              </div>
-              <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-ink/60 to-transparent"
-                aria-hidden="true"
-              />
-              <p className="pointer-events-none absolute left-4 top-4 font-mono text-[0.65rem] uppercase tracking-widest text-ink-muted">
-                Our services — in continuous motion
-              </p>
+            <div className="relative h-[420px] w-full [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] sm:h-[500px] lg:-mr-16 lg:h-[560px]">
+              <HeroVisual />
             </div>
           </Reveal>
         </div>

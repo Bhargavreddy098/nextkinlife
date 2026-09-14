@@ -1,6 +1,25 @@
 # Worklog
 
 ---
+Task ID: 5
+Agent: Super Z (main agent)
+Task: Remove the hero visual card and make the animation free-floating + richer (user: "you are doing hero section animation in the card only first remove that hero section card and make better illustrator or animation")
+
+Work Log:
+- hero.tsx: deleted the entire bordered card wrapper (rounded-xl border, bg-ink-2/70 box, inner grid-lines, bottom gradient, "Our services — in continuous motion" caption); visual now lives in a free-floating slot (h-420/500/560 by breakpoint) with a horizontal CSS mask-image fade (6% each side) so chips dissolve gracefully at the slot edges instead of being cut; lg:-mr-16 lets the orbit bleed toward the viewport edge; section-level overflow-hidden keeps it safe
+- hero-visual.tsx rebuilt around a bigger card-free orbit (rx up to 310 / ry up to 212, previously capped at 252/188): all geometry derived from one shared `rotation` MotionValue (rAF drift 0.11 rad/s + scroll-linked spin ×1.15π, both frozen under prefers-reduced-motion)
+- New animation layers, all computed from that single value (no extra loops): 3 RingPulse light dots racing along the band at 2.6× speed with jade glow; 10 OrbitDot micro-dots riding between chips; 3 CounterDot dust particles on an outer dashed ellipse orbiting in reverse (−0.5×); 6 dashed SVG Connector lines from core to near-side chips (opacity gated on depth sin > 0.2); breathing radial glow (7s opacity/scale loop); core halo now has a slow 30s rotating dashed ring
+- Entrance upgrade: band + both outline ellipses draw themselves in via motion pathLength (0→1, staggered 0.3/0.4/0.5s); chips/hub spring-pop as before; stage scales 0.86 on <480px slots
+- Floating facts repositioned for the open composition: 24/7 top-right corner, 3 GLOBAL LOCATIONS bottom-left corner (moved from 13% to 3% after desktop screenshot showed collision with passing chips)
+- Ring band gradient brightened (0.16/0.04/0.11 → 0.2/0.06/0.14 alpha stops); chip/hub surface color unified to #121714
+- Verification: lint clean; desktop 1440px (free orbit, depth-of-field chips, connectors, trust markers back above the fold) + mobile 390px (mask fade, no overlap with copy, scrollWidth 390 = viewport); zero page errors; scroll test confirms scroll-linked spin; production build 6/6 static pages; dev server restarted, HTTP 200
+
+Stage Summary:
+- Deliverable: hero animation no longer confined to a card — the service orbit floats directly on the hero's ink background with breathing glow, edge-fade masks, richer motion (pulses, counter-orbit dust, micro-dots, core connectors, draw-in bands) while keeping motion.dev-grade smoothness and the existing design language
+- Key decisions: every moving layer derives from the single shared rotation MotionValue (cheap, re-render-free); CSS mask instead of gradient overlays to avoid covering the section's grid lines; reduced-motion freezes drift + scroll-spin + all loops
+- Artifacts: verification screenshots scripts/verify-cardfree/1-5*.png
+
+---
 Task ID: 4
 Agent: Super Z (main agent)
 Task: Hero scroll animation overhaul — replace 3D scene with a 5u.ai-style orbiting service-chip ring driven by Motion (motion.dev) springs, staggered hero copy entrance, scroll-linked ring rotation (user: "add these type of scrolling animation in hero section replace that logos with our services… animations like motion.dev… need to scroll these services")

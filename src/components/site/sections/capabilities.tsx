@@ -9,15 +9,15 @@ export function Capabilities() {
       <div className="container-site">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeader
-            eyebrow="Capabilities"
+            eyebrow="Services"
             title={
               <>
-                Six disciplines.
+                How can we help you?
                 <br />
-                One engineering organization.
+                Six services, one team.
               </>
             }
-            description="Most engagements draw on several of these at once. The advantage: strategy, design, engineering and operations sit in the same room — and the same accountability."
+            description="From custom software to AI integration and cloud solutions, our services cover every stage of your digital journey — designed, built and supported by the same accountable team."
           />
           <Reveal delay={120} className="shrink-0">
             <a

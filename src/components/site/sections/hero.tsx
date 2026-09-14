@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { TRUST_MARKERS, INDUSTRIES } from "@/lib/data";
+import { TRUST_MARKERS, SERVICE_KEYWORDS } from "@/lib/data";
 import { Reveal } from "../reveal";
 
 export function Hero() {
@@ -27,21 +27,23 @@ export function Hero() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-jade-bright opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-jade-bright" />
                 </span>
-                Global technology &amp; engineering partner
+                Global IT services &amp; consulting — USA · India · South Africa
               </p>
             </Reveal>
 
             <Reveal delay={80}>
               <h1 className="font-display mt-7 text-[2.75rem] leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-[4.4rem]">
-                Engineering the systems behind{" "}
-                <em className="italic text-jade-bright">ambitious</em> businesses.
+                Build the future
+                <br />
+                <em className="italic text-jade-bright">with us.</em>
               </h1>
             </Reveal>
 
             <Reveal delay={160}>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70">
-                We design, build and run custom software, AI systems, data platforms and cloud
-                infrastructure — as one senior engineering organization, accountable end to end.
+                Where innovation meets purpose. NextKinLife turns ambitious ideas into impactful
+                technology — custom software, data platforms, AI and cloud, delivered end to end by
+                one global team.
               </p>
             </Reveal>
 
@@ -51,14 +53,14 @@ export function Hero() {
                   href="#contact"
                   className="group inline-flex items-center gap-2 rounded-md bg-jade-bright px-6 py-3.5 text-base font-medium text-ink transition-colors hover:bg-white"
                 >
-                  Start a Project
+                  Schedule a Consultation
                   <ArrowUpRight className="h-[1.1rem] w-[1.1rem] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
                 <a
-                  href="#capabilities"
+                  href="#careers"
                   className="inline-flex items-center gap-2 rounded-md border border-white/15 px-6 py-3.5 text-base font-medium text-white transition-colors hover:border-white/40"
                 >
-                  Explore Our Capabilities
+                  Explore Careers
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
@@ -66,7 +68,7 @@ export function Hero() {
 
             <Reveal delay={320}>
               <p className="mt-10 max-w-xl font-mono text-xs uppercase tracking-widest text-ink-muted">
-                Custom software · AI · Data · Cloud · Enterprise systems
+                Custom software · Data · AI · Cloud · Enterprise systems · Consulting
               </p>
             </Reveal>
           </div>
@@ -88,16 +90,16 @@ export function Hero() {
 
             {/* Floating capability chips */}
             <div className="absolute -left-3 top-8 hidden rounded-md border border-white/10 bg-ink-2/90 px-3.5 py-2 backdrop-blur-md sm:block">
-              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">AI Agents</p>
-              <p className="mt-0.5 text-xs text-white/70">Orchestrated · Audited</p>
+              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">AI Integration</p>
+              <p className="mt-0.5 text-xs text-white/70">Models · Chatbots · Automation</p>
             </div>
             <div className="absolute -right-2 bottom-16 hidden rounded-md border border-white/10 bg-ink-2/90 px-3.5 py-2 backdrop-blur-md sm:block">
-              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">Cloud Native</p>
-              <p className="mt-0.5 text-xs text-white/70">Kubernetes · IaC</p>
+              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">Cloud Services</p>
+              <p className="mt-0.5 text-xs text-white/70">Migration · Cloud-native</p>
             </div>
             <div className="absolute -bottom-5 left-10 hidden rounded-md border border-white/10 bg-ink-2/90 px-3.5 py-2 backdrop-blur-md md:block">
-              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">Data Platform</p>
-              <p className="mt-0.5 text-xs text-white/70">Streaming · Governed</p>
+              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">Data Engineering</p>
+              <p className="mt-0.5 text-xs text-white/70">Pipelines · Dashboards</p>
             </div>
           </Reveal>
         </div>
@@ -122,9 +124,9 @@ export function Hero() {
       <div className="relative mt-14 border-t border-white/[0.07] py-5">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent" aria-hidden="true" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent" aria-hidden="true" />
-        <p className="sr-only">Industries served</p>
+        <p className="sr-only">Services and expertise</p>
         <div className="flex w-max animate-marquee items-center gap-10 pl-4" aria-hidden="true">
-          {[...INDUSTRIES, ...INDUSTRIES].map((ind, i) => (
+          {[...SERVICE_KEYWORDS, ...SERVICE_KEYWORDS].map((ind, i) => (
             <span key={i} className="flex items-center gap-10 whitespace-nowrap font-mono text-xs uppercase tracking-[0.18em] text-white/35">
               {ind}
               <span className="h-1 w-1 rounded-full bg-jade-bright/50" />

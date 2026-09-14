@@ -8,9 +8,11 @@ export function LogoMark({ className }: { className?: string }) {
       className={cn("h-8 w-8", className)}
     >
       <rect width="64" height="64" rx="14" className="fill-ink" />
-      <path d="M19 13h9v38h-9z" className="fill-background" />
-      <path d="M31.5 32 47 13h-11L22.5 30.5 41 51h11L31.5 32Z" className="fill-jade-bright" />
-      <circle cx="47.5" cy="17.5" r="3.5" className="fill-background" />
+      {/* N monogram: two stems + jade diagonal */}
+      <path d="M18 51V13h8v38h-8z" className="fill-background" />
+      <path d="M38 51V13h8v38h-8z" className="fill-background" />
+      <path d="M18 13h8.5L46 51h-8.5L18 13Z" className="fill-jade-bright" />
+      <circle cx="46" cy="17" r="3" className="fill-background" />
     </svg>
   );
 }
@@ -25,7 +27,7 @@ export function Logo({ className, inverted = false }: { className?: string; inve
           inverted ? "text-white" : "text-foreground"
         )}
       >
-        Kaidron
+        NextKinLife
       </span>
     </span>
   );

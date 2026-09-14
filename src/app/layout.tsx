@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: `%s — ${SITE.name}`,
   },
   description:
-    "Kaidron is a global technology company engineering custom software, AI systems, data platforms and cloud infrastructure for ambitious enterprises.",
+    "NextKinLife is a global IT services and consulting company delivering custom web applications, data engineering & analytics, AI integration, cloud services, enterprise software and IT consulting across the USA, India and South Africa.",
   applicationName: SITE.name,
   authors: [{ name: SITE.name, url: SITE.url }],
   creator: SITE.name,
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${SITE.name} — ${SITE.tagline}`,
     description:
-      "Custom software, AI & automation, data engineering, cloud and enterprise technology consulting — engineered end to end.",
+      "Custom web applications, data engineering & analytics, AI integration, cloud services, enterprise software and IT consulting — delivered end to end across the USA, India and South Africa.",
     images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: `${SITE.name}` }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.name} — ${SITE.tagline}`,
     description:
-      "Custom software, AI & automation, data engineering, cloud and enterprise technology consulting — engineered end to end.",
+      "Custom web applications, data engineering & analytics, AI integration, cloud services, enterprise software and IT consulting — delivered end to end.",
     images: ["/images/og-default.png"],
   },
   robots: {

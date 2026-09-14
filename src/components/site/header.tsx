@@ -34,7 +34,7 @@ export function SiteHeader() {
       )}
     >
       <div className="container-site flex h-16 items-center justify-between gap-6 sm:h-[4.5rem]">
-        <a href="#top" aria-label="Kaidron — back to top" className="shrink-0">
+        <a href="#top" aria-label="NextKinLife — back to top" className="shrink-0">
           <Logo inverted />
         </a>
 
@@ -109,7 +109,7 @@ export function SiteHeader() {
             <ArrowUpRight className="h-4 w-4" />
           </a>
           <p className="mt-6 text-center text-sm text-ink-muted">
-            hello@kaidron.com · USA · India · South Africa
+            contact@nextkinlife.com · USA · India · South Africa
           </p>
         </div>
       </div>

@@ -1,13 +1,9 @@
-import { ArrowUpRight, ArrowRight, Globe2, GraduationCap, Home, HeartHandshake } from "lucide-react";
-import { OPEN_ROLES } from "@/lib/data";
+import { ArrowUpRight, ArrowRight, Briefcase, Sprout } from "lucide-react";
+import { CAREER_TRACKS, CAREER_PERKS } from "@/lib/data";
+import { SITE } from "@/lib/site";
 import { Reveal } from "../reveal";
 
-const PERKS = [
-  { icon: Globe2, text: "Remote-first across three continents" },
-  { icon: GraduationCap, text: "Annual learning & certification budget" },
-  { icon: Home, text: "Home-office setup allowance" },
-  { icon: HeartHandshake, text: "Health cover & flexible time off" },
-];
+const TRACK_ICONS = [Sprout, Briefcase];
 
 export function Careers() {
   return (
@@ -22,25 +18,24 @@ export function Careers() {
                 Careers
               </p>
               <h2 className="font-display mt-4 text-4xl leading-[1.06] tracking-tight sm:text-5xl">
-                Do the best work
+                Your journey
                 <br />
-                of your career.
+                starts here.
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Small teams, serious problems, no delivery-theater. Kaidron engineers work directly
-                with clients, ship weekly, and own what they build — from architecture to the 3 a.m.
-                pager (rarely).
+                At NextKinLife, we&apos;re looking for more than employees — we&apos;re building a
+                team of innovators, thinkers and learners who want to create something that lasts.
+                Join us, and you&apos;re not taking a job; you&apos;re taking the first step in a
+                shared journey.
               </p>
             </Reveal>
 
             <Reveal delay={120}>
-              <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-                {PERKS.map((p) => (
-                  <li key={p.text} className="flex items-start gap-3">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-background text-jade-strong">
-                      <p.icon className="h-4 w-4" aria-hidden="true" />
-                    </span>
-                    <span className="pt-1.5 text-sm leading-snug text-foreground/85">{p.text}</span>
+              <ul className="mt-8 grid gap-3.5 sm:grid-cols-2">
+                {CAREER_PERKS.map((perk) => (
+                  <li key={perk} className="flex items-start gap-2.5 text-sm leading-snug text-foreground/85">
+                    <span className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-jade" aria-hidden="true" />
+                    {perk}
                   </li>
                 ))}
               </ul>
@@ -48,52 +43,68 @@ export function Careers() {
 
             <Reveal delay={200}>
               <a
-                href="mailto:careers@kaidron.com?subject=Open%20Positions"
+                href={`mailto:${SITE.careersEmail}?subject=Open%20Positions`}
                 className="group mt-10 inline-flex items-center gap-2 rounded-md bg-ink px-6 py-3.5 text-base font-medium text-white transition-colors hover:bg-jade-strong"
               >
-                View Open Positions
+                Explore Career Opportunities
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Reveal>
           </div>
 
-          {/* Right — roles */}
+          {/* Right — tracks */}
           <Reveal delay={140}>
             <div className="overflow-hidden rounded-xl border border-line bg-card">
               <div className="flex items-center justify-between border-b border-line px-6 py-4">
-                <p className="text-sm font-semibold">Open positions</p>
+                <p className="text-sm font-semibold">An opportunity to reinvent your world</p>
                 <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  {OPEN_ROLES.length} roles
+                  2 tracks
                 </p>
               </div>
               <ul className="divide-y divide-line">
-                {OPEN_ROLES.map((role) => (
-                  <li key={role.id}>
-                    <a
-                      href={`mailto:careers@kaidron.com?subject=Application:%20${encodeURIComponent(role.title)}`}
-                      className="group flex items-center gap-4 px-6 py-5 transition-colors hover:bg-paper"
-                      aria-label={`Apply for ${role.title}`}
-                    >
-                      <div className="min-w-0 flex-1">
-                        <p className="font-medium leading-snug">{role.title}</p>
-                        <p className="mt-1 text-xs text-muted-foreground">
-                          <span className="font-mono uppercase tracking-wide text-jade-strong">{role.department}</span>
-                          {" · "}
-                          {role.location} · {role.type} · {role.level}
-                        </p>
+                {CAREER_TRACKS.map((track, i) => {
+                  const Icon = TRACK_ICONS[i % TRACK_ICONS.length];
+                  return (
+                    <li key={track.id} className="px-6 py-7">
+                      <div className="flex items-center gap-4">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-jade-soft text-jade-strong">
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                        <h3 className="text-xl font-semibold tracking-tight">{track.title}</h3>
                       </div>
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-muted-foreground transition-all group-hover:border-jade group-hover:bg-jade group-hover:text-white">
-                        <ArrowUpRight className="h-4 w-4" />
-                      </span>
-                    </a>
-                  </li>
-                ))}
+                      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                        {track.description}
+                      </p>
+                      <ul className="mt-4 flex flex-wrap gap-2">
+                        {track.points.map((pt) => (
+                          <li
+                            key={pt}
+                            className="rounded border border-line bg-paper-2 px-2.5 py-1 font-mono text-[0.65rem] uppercase tracking-wide text-muted-foreground"
+                          >
+                            {pt}
+                          </li>
+                        ))}
+                      </ul>
+                      <a
+                        href={`mailto:${SITE.careersEmail}?subject=${encodeURIComponent(`Application: ${track.title}`)}`}
+                        className="group/link mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-jade-strong transition-colors hover:text-ink"
+                        aria-label={`Apply via email — ${track.title}`}
+                      >
+                        Apply via email
+                        <ArrowUpRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
               <div className="border-t border-line bg-paper px-6 py-4">
                 <p className="text-xs leading-relaxed text-muted-foreground">
-                  Don&apos;t see your role? We hire exceptional people ahead of openings —{" "}
-                  <a href="mailto:careers@kaidron.com" className="font-medium text-jade-strong link-underline">
-                    careers@kaidron.com
+                  Work with diverse, driven people on global projects that are shaping the world —{" "}
+                  <a
+                    href={`mailto:${SITE.careersEmail}`}
+                    className="font-medium text-jade-strong link-underline"
+                  >
+                    {SITE.careersEmail}
                   </a>
                 </p>
               </div>

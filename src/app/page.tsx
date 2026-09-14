@@ -2,14 +2,13 @@ import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
 import { Hero } from "@/components/site/sections/hero";
 import { Capabilities } from "@/components/site/sections/capabilities";
-import { Work } from "@/components/site/sections/work";
+import { Approach } from "@/components/site/sections/approach";
 import { Innovation } from "@/components/site/sections/innovation";
 import { Careers } from "@/components/site/sections/careers";
 import { ContactCta } from "@/components/site/sections/contact-cta";
 import { SectionHeader } from "@/components/site/section-header";
 import { TechTabs } from "@/components/site/tech-tabs";
 import { ProcessExplorer } from "@/components/site/process-explorer";
-import { Reveal } from "@/components/site/reveal";
 import { SITE } from "@/lib/site";
 
 const jsonLd = {
@@ -24,16 +23,25 @@ const jsonLd = {
       logo: `${SITE.url}/icon.svg`,
       description: SITE.description,
       email: SITE.email,
+      telephone: SITE.phone,
       foundingDate: SITE.founded,
-      sameAs: [SITE.socials.linkedin, SITE.socials.github, SITE.socials.x],
+      sameAs: [SITE.socials.instagram],
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "8795 Stonehouse Dr",
+        addressLocality: "Ellicott City",
+        addressRegion: "MD",
+        postalCode: "21043",
+        addressCountry: "US",
+      },
       areaServed: ["United States", "India", "South Africa"],
       knowsAbout: [
-        "Custom software development",
-        "Artificial intelligence",
-        "Data engineering",
-        "Cloud computing",
-        "Enterprise software",
-        "Technology consulting",
+        "Custom web applications",
+        "Data engineering and analytics",
+        "AI integration",
+        "Cloud services",
+        "Enterprise software development",
+        "IT consulting",
       ],
     },
     {
@@ -57,7 +65,7 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <Capabilities />
-        <Work />
+        <Approach />
 
         {/* Technology */}
         <section id="technology" className="scroll-mt-20 bg-background py-24 sm:py-32">
@@ -65,7 +73,7 @@ export default function Home() {
             <SectionHeader
               eyebrow="Technology"
               title="A stack chosen for outcomes, not fashion."
-              description="Tools earn their place by how they perform in production. Here's what we build with — and more importantly, where each one earns its keep."
+              description="Tools earn their place by how they perform in production. Here's what we build with — and where each one earns its keep in your product."
             />
             <TechTabs />
           </div>
@@ -75,9 +83,9 @@ export default function Home() {
         <section id="process" className="scroll-mt-20 bg-paper-2 py-24 sm:py-32">
           <div className="container-site">
             <SectionHeader
-              eyebrow="Process"
-              title="From first call to production — without the mystery."
-              description="Six deliberate stages with named deliverables at every step. You always know what's happening, what's next, and what it costs."
+              eyebrow="Our Process"
+              title="The 6-D process, without the mystery."
+              description="Discover, Define, Design, Develop, Deploy, Deliver — six deliberate stages that take your project from first conversation to long-term success, and keep you informed at every step."
             />
             <ProcessExplorer />
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { PROCESS_STAGES } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -75,19 +75,26 @@ export function ProcessExplorer() {
             <div>
               <h3 className="font-display text-2xl tracking-tight text-white sm:text-3xl">{stage.title}</h3>
               <p className="mt-1 font-mono text-xs uppercase tracking-widest text-ink-muted">
-                {stage.duration}
+                {stage.tag}
               </p>
             </div>
           </div>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
             {stage.description}
           </p>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.04] px-4 py-3">
-            <FileText className="h-4 w-4 shrink-0 text-jade-bright" aria-hidden="true" />
-            <p className="text-sm text-white/85">
-              <span className="text-ink-muted">Deliverable — </span>
-              {stage.deliverable}
-            </p>
+          <div className="mt-8">
+            <p className="eyebrow text-white/50">What happens here</p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {stage.focus.map((f) => (
+                <li
+                  key={f}
+                  className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-3.5 py-2 text-sm text-white/85"
+                >
+                  <Check className="h-3.5 w-3.5 shrink-0 text-jade-bright" aria-hidden="true" />
+                  {f}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

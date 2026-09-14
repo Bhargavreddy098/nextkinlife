@@ -237,65 +237,11 @@
   .link-underline:hover {
     background-size: 100% 1px;
   }
-  @keyframes marquee-x {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-  .animate-marquee {
-    animation: marquee-x 38s linear infinite;
-  }
-  @keyframes marquee-ltr {
-    from {
-      transform: translate3d(-50%, 0, 0);
-    }
-    to {
-      transform: translate3d(0%, 0, 0);
-    }
-  }
-  .animate-marquee-ltr {
-    animation: marquee-ltr 22s linear infinite !important;
-  }
-  .animate-marquee-cards-ltr {
-    animation: marquee-ltr 46s linear infinite !important;
-  }
-  .animate-marquee-ltr:hover,
-  .animate-marquee-cards-ltr:hover,
-  .animate-marquee:hover {
-    animation-play-state: paused;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    /* Preserve marquee tickers so user-requested tickers remain functional */
-  }
-  @keyframes pulse-node {
-    0%,
-    100% {
-      opacity: 0.35;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-  .animate-node {
-    animation: pulse-node 3.2s ease-in-out infinite;
-  }
-  @keyframes flow-dash {
-    to {
-      stroke-dashoffset: -24;
-    }
-  }
-  .animate-flow {
-    stroke-dasharray: 6 6;
-    animation: flow-dash 1.6s linear infinite;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .animate-flow,
-    .animate-node {
-      animation: none;
-    }
+  /* All animations disabled */
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
   }
 
   @media (min-width: 1024px) {

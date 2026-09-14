@@ -1,13 +1,9 @@
-"use client";
-
 import { Check } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
 import { APPROACH_PILLARS, DEV_STRENGTHS } from "@/lib/data";
 import { SectionHeader } from "../section-header";
 import { Reveal } from "../reveal";
 
 export function Approach() {
-  const reducedMotion = useReducedMotion();
 
   return (
     <section id="approach" className="scroll-mt-20 bg-ink py-24 text-ink-foreground sm:py-32">
@@ -28,19 +24,7 @@ export function Approach() {
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {APPROACH_PILLARS.map((pillar, i) => (
             <Reveal key={pillar.id} delay={i * 70} className="h-full">
-              <motion.article
-                whileHover={
-                  reducedMotion
-                    ? undefined
-                    : {
-                        y: -6,
-                        boxShadow: "0 20px 30px -10px rgba(0,0,0,0.5), 0 0 20px 0 rgba(67,217,163,0.15)",
-                        borderColor: "rgba(67,217,163,0.3)",
-                      }
-                }
-                transition={{ duration: 0.25 }}
-                className="flex h-full flex-col rounded-2xl border border-white/10 bg-ink-2/90 p-7 transition-colors duration-300"
-              >
+              <article className="flex h-full flex-col rounded-2xl border border-white/10 bg-ink-2/90 p-7 transition-colors duration-300">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs font-semibold tracking-[0.2em] text-jade-bright">
                     {pillar.step}
@@ -63,7 +47,7 @@ export function Approach() {
                     </li>
                   ))}
                 </ul>
-              </motion.article>
+              </article>
             </Reveal>
           ))}
         </div>

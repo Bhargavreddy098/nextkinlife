@@ -41,21 +41,7 @@ export function Hero() {
           </dl>
         </Reveal>
       </div>
-
-      {/* Full-width bottom services marquee (Left to Right) */}
-      {/* <div className="relative mt-8 border-t border-white/[0.07] py-5 sm:mt-12">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink to-transparent" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink to-transparent" aria-hidden="true" />
-        <p className="sr-only">Services and expertise</p>
-        <div className="flex w-max animate-marquee-ltr items-center gap-10" aria-hidden="true">
-          {[...SERVICE_KEYWORDS, ...SERVICE_KEYWORDS, ...SERVICE_KEYWORDS, ...SERVICE_KEYWORDS].map((ind, i) => (
-            <span key={i} className="flex items-center gap-10 whitespace-nowrap font-mono text-xs uppercase tracking-[0.18em] text-white/40">
-              {ind}
-              <span className="h-1 w-1 rounded-full bg-jade-bright/60" />
-            </span>
-          ))}
-        </div>
-      </div> */}
     </section>
   );
 }
+

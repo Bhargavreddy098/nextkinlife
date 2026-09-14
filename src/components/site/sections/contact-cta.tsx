@@ -32,14 +32,14 @@ export function ContactCta() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <a
                 href={`mailto:${SITE.email}?subject=Project%20inquiry`}
-                className="group inline-flex items-center gap-2 rounded-md bg-jade-bright px-7 py-4 text-base font-medium text-ink transition-colors hover:bg-white"
+                className="group inline-flex items-center gap-2 rounded-xl bg-jade-bright px-7 py-4 text-base font-medium text-ink shadow-[0_10px_30px_-8px_rgba(67,217,163,0.5)] transition-all duration-300 hover:scale-[1.03] hover:bg-white active:scale-[0.98]"
               >
                 <Mail className="h-4.5 w-4.5" aria-hidden="true" />
                 Book a Call
               </a>
               <a
                 href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-                className="inline-flex items-center gap-2 rounded-md border border-white/15 px-7 py-4 text-base font-medium text-white transition-colors hover:border-white/40"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-7 py-4 text-base font-medium text-white transition-all duration-300 hover:scale-[1.03] hover:border-white/40 active:scale-[0.98]"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 {SITE.phone}

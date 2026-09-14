@@ -47,16 +47,16 @@ export function Innovation() {
         <div className="mt-14 grid gap-6 lg:grid-cols-2">
           {PRODUCTS.map((p, i) => (
             <Reveal key={p.id} delay={i * 100} className="h-full">
-              <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_-24px_rgba(12,15,14,0.25)]">
+              <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-card transition-all duration-500 hover:-translate-y-1.5 hover:border-jade/30 hover:shadow-[0_25px_50px_-20px_rgba(16,185,129,0.15)]">
                 <div className="relative aspect-[16/9] overflow-hidden bg-ink">
                   <Image
                     src={p.image}
                     alt={`Abstract illustration for ${p.name}`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                   />
-                  <StatusBadge status={p.status} className="absolute right-4 top-4 backdrop-blur-md" />
+                  <StatusBadge status={p.status} className="absolute right-4 top-4 backdrop-blur-md shadow-md" />
                 </div>
                 <div className="flex flex-1 flex-col p-7">
                   <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-jade">
@@ -84,7 +84,7 @@ export function Innovation() {
                     </a>
                   </div>
                 </div>
-              </article>
+              </div>
             </Reveal>
           ))}
         </div>

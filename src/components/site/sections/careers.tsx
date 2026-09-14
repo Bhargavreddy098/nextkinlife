@@ -44,7 +44,7 @@ export function Careers() {
             <Reveal delay={200}>
               <a
                 href={`mailto:${SITE.careersEmail}?subject=Open%20Positions`}
-                className="group mt-10 inline-flex items-center gap-2 rounded-md bg-ink px-6 py-3.5 text-base font-medium text-white transition-colors hover:bg-jade-strong"
+                className="group mt-10 inline-flex items-center gap-2 rounded-xl bg-ink px-6 py-3.5 text-base font-medium text-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:bg-jade-strong active:scale-[0.98]"
               >
                 Explore Career Opportunities
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

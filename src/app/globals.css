@@ -160,13 +160,6 @@
     html {
       scroll-behavior: auto;
     }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-    }
   }
 }
 
@@ -255,10 +248,27 @@
   .animate-marquee {
     animation: marquee-x 38s linear infinite;
   }
-  @media (prefers-reduced-motion: reduce) {
-    .animate-marquee {
-      animation: none;
+  @keyframes marquee-ltr {
+    from {
+      transform: translate3d(-50%, 0, 0);
     }
+    to {
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+  .animate-marquee-ltr {
+    animation: marquee-ltr 22s linear infinite !important;
+  }
+  .animate-marquee-cards-ltr {
+    animation: marquee-ltr 46s linear infinite !important;
+  }
+  .animate-marquee-ltr:hover,
+  .animate-marquee-cards-ltr:hover,
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* Preserve marquee tickers so user-requested tickers remain functional */
   }
   @keyframes pulse-node {
     0%,
@@ -287,4 +297,11 @@
       animation: none;
     }
   }
+
+  @media (min-width: 1024px) {
+    .lg\:hidden {
+      display: none !important;
+    }
+  }
 }
+

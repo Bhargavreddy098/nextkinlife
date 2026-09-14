@@ -24,6 +24,24 @@ Stage Summary:
 - Scripts persisted: scripts/generate-images.mjs (re-runnable), verification screenshots in scripts/
 
 ---
+Task ID: 3
+Agent: Super Z (main agent)
+Task: Hero upgrade — replace static hero illustration with a Three.js 3D "delivery engine" animation showcasing the 6 NextKinLife services, and rewrite the hero copy (user: "replace with a better one… use some threejs… use company services and you can animate those… without deviating")
+
+Work Log:
+- Installed three@0.186, @react-three/fiber@9.7, @react-three/drei@10.7, @types/three (React 19 compatible)
+- New src/components/site/hero-scene.tsx (client Canvas scene): central pulsing core (wireframe icosahedron + emissive inner sphere + Sparkles + jade point light) with 6 orbiting service nodes, each with unique geometry (web = browser box, data = DB cylinders, AI = wireframe icosahedron, cloud = sphere cluster, enterprise = octahedron, consulting = torus), drei Float bobbing, drei Html mono-chip labels (design-matching, screen-space), bezier connection lines with traveling light pulses, 240-point dust shell, pointer-parallax camera rig + slow auto-rotation, responsive master-group scaling (0.7/<640px, 0.85/<1024px, 1.05 desktop)
+- Accessibility/perf: prefers-reduced-motion via useSyncExternalStore (frameloop="demand" → fully static scene, no animation loops), dpr [1,1.75], transparent canvas over existing grid-lines backdrop, dynamic import ssr:false keeps three out of initial bundle; fixed react-hooks/set-state-in-effect lint error
+- New src/components/site/hero-visual.tsx: client wrapper, dynamic import + dot-grid pulsing-ring CSS fallback, role="img" aria-label listing all six services
+- hero.tsx: headline "Build the future with us." → "Ideas in. Impact out." (keeps NextKinLife idea→impact DNA, second line italic jade per design system); subtext rewritten ("…designs, builds and runs the technology ambitious companies depend on — custom software, data platforms, AI and cloud — taken from first sketch to global scale by one team across three continents."); replaced next/image hero-visual.png + floating HTML chips with bordered 3D container ("The NextKinLife delivery engine" mono caption); everything else (eyebrow, CTAs, trust markers, marquee) untouched
+- Verification: lint clean; desktop 1440px + mobile 390px screenshots (labels fit, no clipping after scale tuning); zero page errors (only benign THREE.Clock deprecation warning from drei); production build passes 6/6 static pages; dev server 200 after build
+
+Stage Summary:
+- Deliverable: hero now an interactive 3D "delivery engine" — all 6 real NextKinLife services orbit an animated core with labels, pulses and parallax; new punchier hero copy; design language (ink/jade/serif/mono) fully preserved
+- Key decisions: service labels as DOM (drei Html) for crisp readable text tied to real service names; static frame under reduced motion instead of removing the scene; three.js lazy-loaded via client wrapper (Server Components can't use next/dynamic ssr:false)
+- Scripts/artifacts: verification screenshots scripts/verify-3d-hero-*.png; hero-visual.png now unused by hero (file kept, harmless)
+
+---
 Task ID: 2
 Agent: Super Z (main agent)
 Task: Rebrand landing page to "NextKinLife" and replace all content with real business data scraped from nextkinlife.com (user: "take complete information and what services they are providing... use company name Nextkinlife")

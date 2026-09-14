@@ -1,7 +1,7 @@
-import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { TRUST_MARKERS, SERVICE_KEYWORDS } from "@/lib/data";
 import { Reveal } from "../reveal";
+import { HeroVisual } from "../hero-visual";
 
 export function Hero() {
   return (
@@ -33,17 +33,17 @@ export function Hero() {
 
             <Reveal delay={80}>
               <h1 className="font-display mt-7 text-[2.75rem] leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-[4.4rem]">
-                Build the future
+                Ideas in.
                 <br />
-                <em className="italic text-jade-bright">with us.</em>
+                <em className="italic text-jade-bright">Impact out.</em>
               </h1>
             </Reveal>
 
             <Reveal delay={160}>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70">
-                Where innovation meets purpose. NextKinLife turns ambitious ideas into impactful
-                technology — custom software, data platforms, AI and cloud, delivered end to end by
-                one global team.
+                NextKinLife designs, builds and runs the technology ambitious companies depend on —
+                custom software, data platforms, AI and cloud — taken from first sketch to global
+                scale by one team across three continents.
               </p>
             </Reveal>
 
@@ -73,33 +73,23 @@ export function Hero() {
             </Reveal>
           </div>
 
-          {/* Visual */}
+          {/* Visual — interactive 3D delivery engine */}
           <Reveal delay={200} className="relative">
-            <div className="relative overflow-hidden rounded-xl border border-white/10 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
-              <Image
-                src="/images/hero-visual.png"
-                alt="Abstract visualization of layered software architecture connected by flowing data"
-                width={1344}
-                height={768}
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="h-auto w-full"
+            <div className="relative overflow-hidden rounded-xl border border-white/10 bg-ink-2/70 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
+              <div
+                className="pointer-events-none absolute inset-0 grid-lines-dark opacity-70"
+                aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" aria-hidden="true" />
-            </div>
-
-            {/* Floating capability chips */}
-            <div className="absolute -left-3 top-8 hidden rounded-md border border-white/10 bg-ink-2/90 px-3.5 py-2 backdrop-blur-md sm:block">
-              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">AI Integration</p>
-              <p className="mt-0.5 text-xs text-white/70">Models · Chatbots · Automation</p>
-            </div>
-            <div className="absolute -right-2 bottom-16 hidden rounded-md border border-white/10 bg-ink-2/90 px-3.5 py-2 backdrop-blur-md sm:block">
-              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">Cloud Services</p>
-              <p className="mt-0.5 text-xs text-white/70">Migration · Cloud-native</p>
-            </div>
-            <div className="absolute -bottom-5 left-10 hidden rounded-md border border-white/10 bg-ink-2/90 px-3.5 py-2 backdrop-blur-md md:block">
-              <p className="font-mono text-[0.65rem] uppercase tracking-widest text-jade-bright">Data Engineering</p>
-              <p className="mt-0.5 text-xs text-white/70">Pipelines · Dashboards</p>
+              <div className="aspect-[5/4] w-full sm:aspect-[16/10] lg:aspect-[8/5]">
+                <HeroVisual />
+              </div>
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-ink/60 to-transparent"
+                aria-hidden="true"
+              />
+              <p className="pointer-events-none absolute left-4 top-4 font-mono text-[0.65rem] uppercase tracking-widest text-ink-muted">
+                The NextKinLife delivery engine
+              </p>
             </div>
           </Reveal>
         </div>

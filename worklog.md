@@ -1,6 +1,24 @@
 # Worklog
 
 ---
+Task ID: 4
+Agent: Super Z (main agent)
+Task: Hero scroll animation overhaul — replace 3D scene with a 5u.ai-style orbiting service-chip ring driven by Motion (motion.dev) springs, staggered hero copy entrance, scroll-linked ring rotation (user: "add these type of scrolling animation in hero section replace that logos with our services… animations like motion.dev… need to scroll these services")
+
+Work Log:
+- Installed motion@13.2.0 (motion.dev package; nothing else used framer-motion, no conflicts)
+- Rewrote src/components/site/hero-visual.tsx as a Motion-powered circular service carousel: elliptical SVG ring band (gradient + twin outline ellipses) sized from a ResizeObserver-measured container; 6 service chips (lucide icons + mono labels matching capabilities section) orbit via a single rotation MotionValue → per-chip useTransform for x/y/depth; depth (sin of angle) drives scale 0.64–1.02, opacity 0.25–1, blur 0–3.5px and zIndex for the 5u.ai depth-of-field look; constant auto-drift (0.1 rad/s rAF) plus scroll-linked boost (useScroll scrollYProgress × 1.1π) so the ring spins as the user scrolls; pointer parallax on the whole stage via spring-damped pointer position; central glass hub ("6 — services / one team" with ping ring); two floating fact cards (24/7 monitoring, 3 locations — real verifiable facts, gentle bob loop)
+- New src/components/site/hero-copy.tsx (client): masked word-by-word headline rise ("Ideas in. / Impact out."), fade-rise eyebrow/paragraph/CTAs/mono line with staggered delays (EASE cubic-bezier 0.22,1,0.36,1), whileHover/whileTap spring CTAs; all gated on useReducedMotion (initial={false} when reduced)
+- hero.tsx: left column swapped to <HeroCopy/>, caption → "Our services — in continuous motion"; trust markers/marquee unchanged; 3D scene files kept on disk but no longer imported (three/fiber/drei remain installed for future reuse)
+- Bugfixes: (1) chips initially orbited the container's top-left corner — anchor left/top now set to measured ring center (cx,cy); (2) React hydration mismatch ("1 Issue" dev badge) from continuously-updating motion values rendered during SSR — animated stage now gated behind a useSyncExternalStore-based useMounted() (also satisfies react-hooks/set-state-in-effect, no setState-in-effect)
+- Verification: lint clean; zero console errors after fix; desktop screenshots show depth-blurred back chips + crisp front chips; scroll test confirms ring rotation advances with page scroll; mobile 390px renders correctly with compact chips; production build passes 6/6 static pages; dev server restarted after build overwrote .next (HTTP 200)
+
+Stage Summary:
+- Deliverable: hero right column is now a continuously scrolling service ring (6 real NextKinLife services, depth-of-field, parallax, scroll-linked spin) with motion.dev-grade entrance/hover animation across the whole hero copy; design language untouched
+- Key decisions: replaced (not merged with) the Three.js scene per reference — hero-scene.tsx retained unimported for easy rollback; chips are pure DOM/motion (crisp text, cheap transforms, no WebGL); facts floating on the visual limited to verifiable numbers
+- Artifacts: verification screenshots scripts/verify-ring-*.png; prior 3D screenshots scripts/verify-3d-hero-*.png
+
+---
 Task ID: 1
 Agent: Super Z (main agent)
 Task: Build a premium landing page for "Kaidron" — a corporate technology & IT consulting brand (scope reduced by user from full 17-page site to a single landing page)

@@ -1,7 +1,7 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { TRUST_MARKERS, SERVICE_KEYWORDS } from "@/lib/data";
 import { Reveal } from "../reveal";
 import { HeroVisual } from "../hero-visual";
+import { HeroCopy } from "../hero-copy";
 
 export function Hero() {
   return (
@@ -19,61 +19,12 @@ export function Hero() {
 
       <div className="container-site relative pb-0 pt-32 sm:pt-40">
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
-          {/* Copy */}
-          <div className="max-w-xl">
-            <Reveal>
-              <p className="eyebrow inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-white/80">
-                <span className="relative flex h-2 w-2" aria-hidden="true">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-jade-bright opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-jade-bright" />
-                </span>
-                Global IT services &amp; consulting — USA · India · South Africa
-              </p>
-            </Reveal>
-
-            <Reveal delay={80}>
-              <h1 className="font-display mt-7 text-[2.75rem] leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-[4.4rem]">
-                Ideas in.
-                <br />
-                <em className="italic text-jade-bright">Impact out.</em>
-              </h1>
-            </Reveal>
-
-            <Reveal delay={160}>
-              <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/70">
-                NextKinLife designs, builds and runs the technology ambitious companies depend on —
-                custom software, data platforms, AI and cloud — taken from first sketch to global
-                scale by one team across three continents.
-              </p>
-            </Reveal>
-
-            <Reveal delay={240}>
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <a
-                  href="#contact"
-                  className="group inline-flex items-center gap-2 rounded-md bg-jade-bright px-6 py-3.5 text-base font-medium text-ink transition-colors hover:bg-white"
-                >
-                  Schedule a Consultation
-                  <ArrowUpRight className="h-[1.1rem] w-[1.1rem] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-                <a
-                  href="#careers"
-                  className="inline-flex items-center gap-2 rounded-md border border-white/15 px-6 py-3.5 text-base font-medium text-white transition-colors hover:border-white/40"
-                >
-                  Explore Careers
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </div>
-            </Reveal>
-
-            <Reveal delay={320}>
-              <p className="mt-10 max-w-xl font-mono text-xs uppercase tracking-widest text-ink-muted">
-                Custom software · Data · AI · Cloud · Enterprise systems · Consulting
-              </p>
-            </Reveal>
+          {/* Copy — Motion-powered staggered entrance */}
+          <div>
+            <HeroCopy />
           </div>
 
-          {/* Visual — interactive 3D delivery engine */}
+          {/* Visual — Motion-powered service ring */}
           <Reveal delay={200} className="relative">
             <div className="relative overflow-hidden rounded-xl border border-white/10 bg-ink-2/70 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)]">
               <div
@@ -88,7 +39,7 @@ export function Hero() {
                 aria-hidden="true"
               />
               <p className="pointer-events-none absolute left-4 top-4 font-mono text-[0.65rem] uppercase tracking-widest text-ink-muted">
-                The NextKinLife delivery engine
+                Our services — in continuous motion
               </p>
             </div>
           </Reveal>

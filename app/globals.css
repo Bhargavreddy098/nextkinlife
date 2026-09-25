@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+/*
+ * ============================================================================
+ *  ONECLICKHR VISUAL SYSTEM — single source of truth
+ * ============================================================================
+ *  Change a value here and the entire site follows. No component hardcodes a
+ *  brand colour.
+ *
+ *  Identity: OneClickHR vibrant orange on an off-white slate canvas — matching
+ *  the official OneClickHR logo and app UI.
+ *
+ *  Every text/background pair below is verified to clear WCAG AA (4.5:1).
+ *  Brand orange carries actions and emphasis; info is blue, so brand-orange and
+ *  status-blue stay unambiguous. Danger uses true red for genuine error / expired states.
+ * ============================================================================
+ */
+@theme {
+  /*
+   * TWO COLOURS, ONE SYSTEM
+   * ---------------------------------------------------------------------------
+   *  Ink + ONE accent, on a paper canvas. White is not a colour — it is the
+   *  paper, and every neutral below is a step between paper and ink.
+   *
+   *  The accent is OneClickHR vibrant orange (hsl 21 92% 50%) — matching the
+   *  official logo and product identity. It drives actions and emphasis.
+   *  Blue is the INFO hue (product --info), and red is DANGER (product --danger).
+   */
+  --color-brand: hsl(21 92% 50%); /* accent fill — #f0611d / #f55d0a */
+  --color-brand-strong: hsl(20 95% 44%); /* hover / pressed — #dc4e04 */
+  --color-brand-ink: hsl(20 90% 36%); /* accent text on light paper — 5.3:1 contrast ratio, WCAG AA */
+  --color-brand-soft: hsl(28 100% 96%); /* warm accent tint — #fff7ed */
+  --color-brand-line: hsl(25 90% 86%); /* accent hairline — #fed7aa */
+  --color-brand-wash: rgb(240 97 29 / 0.08); /* the solid brand field wash */
+
+  /* --- Paper: surfaces, brightest to inset (product --card / --page-bg) ---- */
+  --color-canvas: hsl(220 16% 97%); /* page + inset tracks */
+  --color-canvas-band: hsl(0 0% 100%); /* alternating band */
+  --color-surface: hsl(0 0% 100%); /* cards */
+  --color-elevated: hsl(220 16% 96%); /* nested panels, chips, hovers */
+
+  /* --- Ink: text tiers (product --text / --muted) ------------------------- */
+  --color-ink: hsl(227 13% 12%); /* primary 15.8:1 on paper */
+  --color-ink-soft: hsl(224 11% 28%); /* secondary 9.1:1 */
+  --color-muted: hsl(220 9% 46%); /* muted 4.5:1 */
+  --color-faint: hsl(220 9% 46%); /* alias of muted — keeps every label AA-safe */
+
+  /* --- Hairlines (product --border) --------------------------------------- */
+  --color-line: hsl(222 18% 92%);
+  --color-line-strong: hsl(222 16% 86%);
+
+  /* --- Semantic. Base hues are the product's exact values; the `*-soft`
+   *     tints and `*-ink` text variants are derived (lightened / darkened)
+   *     from those hues so chip and stat text clears AA on its tint. ---- */
+  --color-positive: hsl(142 71% 36%); /* product --success */
+  --color-positive-ink: hsl(142 71% 26%); /* text on positive-soft — 5.7:1 */
+  --color-positive-soft: hsl(143 65% 95%);
+
+  --color-warn: hsl(38 92% 50%); /* product --warning */
+  --color-warn-ink: hsl(35 92% 32%); /* text on warn-soft — 4.9:1 */
+  --color-warn-soft: hsl(40 100% 95%);
+
+  /* Genuine error / expired only. True red, distinct from brand orange. */
+  --color-danger: hsl(0 84% 60%); /* product --danger */
+  --color-danger-ink: hsl(0 75% 42%);
+  --color-danger-soft: hsl(0 100% 97%);
+
+  /* Informational states (remote, in review) are the product's blue. */
+  --color-info: hsl(221 83% 53%); /* product --info */
+  --color-info-ink: hsl(221 83% 40%);
+  --color-info-soft: hsl(221 100% 96%);
+
+  /* --- Radii -------------------------------------------------------------- */
+  --radius-card: 16px;
+  --radius-panel: 20px;
+  --radius-control: 12px;
+
+  /* --- Depth on paper -----------------------------------------------------
+   * Soft layered falloff, never a hard grey drop shadow. */
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 12px 32px -12px rgb(15 23 42 / 0.1);
+  --shadow-lift: 0 2px 4px rgb(15 23 42 / 0.05), 0 24px 56px -20px rgb(15 23 42 / 0.16);
+  --shadow-frame: 0 2px 6px rgb(15 23 42 / 0.05), 0 40px 90px -30px rgb(15 23 42 / 0.22);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  /* Mono carries every technical cue: eyebrows, step numbers, captions, URLs. */
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+  /* Handwritten margin voice — annotations only, never body copy. */
+  --font-hand: var(--font-caveat), "Segoe Print", "Comic Sans MS", cursive;
+}
+
+/*
+ * ============================================================================
+ *  LIGHT FX — one accent, no rainbow
+ * ============================================================================
+ *  Outside `@theme` because Tailwind only emits theme variables that a utility
+ *  references, so these must exist for the helpers below.
+ * ============================================================================
+ */
+:root {
+  --oc-accent-glow: rgb(240 97 29 / 0.18); /* behind product frames */
+  --oc-accent-soft: rgb(240 97 29 / 0.10);
+  --oc-grid-line: rgb(15 23 42 / 0.05);
+  --oc-hairline: rgb(15 23 42 / 0.08);
+}
+
+/* A single-source accent glow. Never a multi-hue gradient. */
+.ambient-accent {
+  background-image: radial-gradient(
+    70% 100% at 50% 0%,
+    var(--oc-accent-soft),
+    transparent 70%
+  );
+}
+
+/* The accent halo a product frame floats on. Parent must be `relative`. */
+.halo-product::before {
+  content: "";
+  position: absolute;
+  inset: -8% -6% -14%;
+  z-index: 0;
+  background-image: radial-gradient(
+    55% 60% at 50% 42%,
+    var(--oc-accent-glow),
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+/* Drafted, technical stage behind the product frame. */
+.hairline-grid {
+  background-image:
+    linear-gradient(to right, var(--oc-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--oc-grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(70% 70% at 50% 30%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(70% 70% at 50% 30%, #000 30%, transparent 100%);
+}
+
+/* White hairline grid for the accent CTA field. One colour, still technical. */
+.hairline-grid-invert {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.16) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(70% 80% at 50% 50%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(70% 80% at 50% 50%, #000 35%, transparent 100%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* keeps anchor targets clear of the sticky navbar */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+    /* native scrollbars, controls and autofill follow the paper canvas */
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-ink);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/*
+ * Scroll-driven reveal with zero JavaScript. Browsers without
+ * `animation-timeline` (or users who prefer reduced motion) simply see the
+ * content already in place — nothing is ever hidden by default.
+ */
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 6% cover 24%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

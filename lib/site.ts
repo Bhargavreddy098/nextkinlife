@@ -5,6 +5,23 @@
  * is invented: the app is the only public surface OneClickHR currently has.
  */
 
+/**
+ * The company that owns and operates OneClickHR. Every surface that names the
+ * owner (footer credit, page metadata, legal copy) reads from here so the legal
+ * name never drifts between pages.
+ *
+ * `url` stays empty until a public company site exists — the footer renders the
+ * credit as plain text rather than inventing a link.
+ */
+export const COMPANY = {
+  /** Brand name, used in sentence case copy: "a NextKinLife company". */
+  name: "NextKinLife",
+  /** Registered legal name, used wherever the entity is cited formally. */
+  legalName: "NextKinLife LLC",
+  /** Public company website, e.g. "https://nextkinlife.com". */
+  url: "",
+} as const;
+
 export const APP_URL = "https://app.oneclickhr.app";
 
 export const LOGIN_URL = `${APP_URL}/login`;

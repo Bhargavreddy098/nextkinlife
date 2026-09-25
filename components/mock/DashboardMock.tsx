@@ -95,7 +95,7 @@ export function DashboardMock() {
             Workspace
           </p>
           <p className="mt-1 truncate text-[11px] font-semibold text-ink">
-            NextKinLIfe LLC
+            NextKinLife LLC
           </p>
         </div>
       </aside>

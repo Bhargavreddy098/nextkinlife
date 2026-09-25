@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FOOTER_GROUPS } from "@/lib/site";
+import { COMPANY, FOOTER_GROUPS } from "@/lib/site";
 import { PendingLink } from "./Button";
 import { Logo } from "./Logo";
 
@@ -39,6 +39,27 @@ function FooterLink({
   );
 }
 
+/**
+ * The owning company, cited in full legal form. Rendered as a link only once a
+ * public company site exists, so the credit is never a dead end.
+ */
+function CompanyCredit({ className }: { className: string }) {
+  if (COMPANY.url) {
+    return (
+      <a
+        href={COMPANY.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {COMPANY.legalName}
+      </a>
+    );
+  }
+
+  return <span className={className}>{COMPANY.legalName}</span>;
+}
+
 export function Footer() {
   return (
     <footer className="border-t border-line bg-surface">
@@ -49,6 +70,10 @@ export function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-muted">
               One workspace for attendance, leave, payroll, work authorization,
               tasks and employee operations.
+            </p>
+            <p className="mt-4 flex flex-wrap items-center gap-2 text-[11px] font-bold tracking-[0.12em] text-faint uppercase">
+              <span aria-hidden className="size-1 rounded-full bg-line-strong" />
+              A {COMPANY.name} company
             </p>
           </div>
 
@@ -69,8 +94,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-line pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-muted">
-            &copy; {new Date().getFullYear()} OneClickHR. All rights reserved.
+          <p className="max-w-md text-sm text-muted">
+            &copy; {new Date().getFullYear()} OneClickHR. All rights reserved.{" "}
+            Owned and operated by{" "}
+            <CompanyCredit className="font-semibold text-ink-soft" />.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             <Link

@@ -3,6 +3,7 @@ import { Caveat, Geist_Mono, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import { Footer } from "@/components/site/Footer";
 import { Navbar } from "@/components/site/Navbar";
+import { COMPANY } from "@/lib/site";
 import "./globals.css";
 
 // Inter matches the product UI the palette is ported from.
@@ -34,6 +35,8 @@ export const metadata: Metadata = {
   description:
     "Manage attendance, leave, payroll, work authorization, tasks, and employee operations from one secure HR workspace.",
   applicationName: "OneClickHR",
+  creator: COMPANY.name,
+  publisher: COMPANY.legalName,
   keywords: [
     "HR software",
     "HR operations platform",
@@ -42,6 +45,7 @@ export const metadata: Metadata = {
     "payroll",
     "work authorization reminders",
     "employee management",
+    "NextKinLife",
   ],
   openGraph: {
     type: "website",

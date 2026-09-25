@@ -61,6 +61,7 @@ export const FOOTER_GROUPS: { title: string; links: NavLink[] }[] = [
     links: [
       { label: "Overview", href: "#product" },
       { label: "Features", href: "#features" },
+      { label: "Invoicing", href: "#invoicing" },
       { label: "Work authorization", href: "#compliance" },
       { label: "How it works", href: "#how-it-works" },
       { label: "Pricing", href: "#", pending: true },
@@ -95,9 +96,9 @@ export const MODULES = [
   "Attendance",
   "Leave",
   "Payroll",
+  "Invoicing",
   "Work authorization",
   "Tasks",
   "Employee records",
-  "Invoicing",
   "Job board",
 ] as const;

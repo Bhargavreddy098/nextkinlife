@@ -1,36 +1,32 @@
 import { AppFrame } from "@/components/mock/AppFrame";
-import { WorkAuthMock } from "@/components/mock/WorkAuthMock";
+import { InvoicesMock } from "@/components/mock/InvoicesMock";
 import { Eyebrow, Lead, Section, SectionHeading } from "@/components/site/Section";
 
 const POINTS = [
   {
-    title: "Dates in one place",
-    body: "Record authorization types and expiry dates against the employee record instead of a shared calendar.",
+    title: "Send an invoice in minutes",
+    body: "Start from a client, pick unbilled work or a flat fee, and issue a branded invoice without leaving the platform.",
   },
   {
-    title: "Milestone reminders",
-    body: "Reminders fire at 90, 60, 30 and 7 days before an expiry, so nothing is noticed too late.",
+    title: "Know what is owed",
+    body: "Totals, pending and overdue amounts sit at the top of the screen, so cash position is the first thing you see.",
   },
   {
-    title: "No duplicate chasing",
-    body: "Each milestone fires once — reminders never double-send and clutter the inbox.",
+    title: "Chase payment on time",
+    body: "Paid, pending and overdue statuses stay visible on every invoice, so follow-ups happen before they hurt cash flow.",
   },
 ];
 
-export function WorkAuthorization() {
+export function Invoices() {
   return (
-    // `bordered` keeps the canvas/canvas seam with the invoicing section above
-    // visually separated.
-    <Section id="compliance" bordered>
+    <Section id="invoicing">
       <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-14">
         <div>
-          <Eyebrow>Work authorization</Eyebrow>
-          <SectionHeading>
-            Stay ahead of critical employee deadlines.
-          </SectionHeading>
+          <Eyebrow>Invoicing</Eyebrow>
+          <SectionHeading>Bill clients and get paid faster.</SectionHeading>
           <Lead className="mt-5">
-            Track important authorization dates and receive reminders before
-            expiration, so renewals start with time to spare.
+            Create, send and track invoices alongside the rest of your
+            operations &mdash; so revenue never lives in a separate tool.
           </Lead>
 
           <ul className="mt-8 space-y-5">
@@ -65,17 +61,17 @@ export function WorkAuthorization() {
           </ul>
 
           <p className="mt-8 rounded-card border border-line bg-surface px-4 py-3 text-[12px] leading-[1.6] text-muted">
-            OneClickHR tracks dates and sends reminders. It is not an immigration
-            law service and does not provide legal advice.
+            Invoices, clients and payment statuses shown here are illustrative
+            examples for demonstration.
           </p>
         </div>
 
         <div>
           <AppFrame
-            label="OneClickHR work authorization screen showing a reminder timeline from today through 90, 60, 30 and 7 day milestones to expiration, and a list of employees with authorization type, expiry date, days remaining and reminder status."
-            url="app.oneclickhr.app/compliance"
+            label="OneClickHR invoices screen showing total earned, pending and overdue totals, search and status filters, and a list of invoices with number, client, issue date, amount and paid, pending or overdue status."
+            url="app.oneclickhr.app/invoices"
           >
-            <WorkAuthMock />
+            <InvoicesMock />
           </AppFrame>
         </div>
       </div>

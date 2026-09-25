@@ -1,6 +1,7 @@
 import {
   AttendanceVisual,
   EmployeesVisual,
+  InvoiceVisual,
   LeaveVisual,
   PayrollVisual,
   TasksVisual,
@@ -9,7 +10,13 @@ import {
 import { Eyebrow, Lead, Section, SectionHeading } from "@/components/site/Section";
 import type { ReactNode } from "react";
 
-const FEATURES: { title: string; body: string; visual: ReactNode }[] = [
+const FEATURES: {
+  title: string;
+  body: string;
+  visual: ReactNode;
+  /** Spans the full row as a brand-tinted spotlight card. */
+  highlight?: boolean;
+}[] = [
   {
     title: "Attendance & Time",
     body: "Track clock-ins, shifts, and working hours.",
@@ -40,6 +47,12 @@ const FEATURES: { title: string; body: string; visual: ReactNode }[] = [
     body: "Keep workforce information and everyday HR activities organized.",
     visual: <EmployeesVisual />,
   },
+  {
+    title: "Invoicing",
+    body: "Bill clients from the same workspace — totals, pending and overdue amounts stay visible so cash position is never a guess.",
+    visual: <InvoiceVisual />,
+    highlight: true,
+  },
 ];
 
 export function FeatureGrid() {
@@ -50,7 +63,8 @@ export function FeatureGrid() {
         <SectionHeading>Every HR workflow, in one system.</SectionHeading>
         <Lead className="mt-5">
           The day-to-day work of running a team &mdash; time, leave, pay,
-          deadlines, and tasks &mdash; without switching between tools.
+          invoicing, deadlines, and tasks &mdash; without switching between
+          tools.
         </Lead>
       </div>
 
@@ -58,15 +72,27 @@ export function FeatureGrid() {
         {FEATURES.map((feature) => (
           <li
             key={feature.title}
-            className="reveal flex flex-col rounded-panel border border-line bg-surface p-5 shadow-card transition duration-300 hover:border-brand-line hover:shadow-lift"
+            className={
+              feature.highlight
+                ? "reveal flex flex-col rounded-panel border border-brand-line bg-surface p-5 shadow-card transition duration-300 hover:shadow-lift sm:col-span-2 sm:flex-row sm:items-center sm:gap-8 sm:p-6 lg:col-span-3"
+                : "reveal flex flex-col rounded-panel border border-line bg-surface p-5 shadow-card transition duration-300 hover:border-brand-line hover:shadow-lift"
+            }
           >
-            <h3 className="text-[17px] font-bold tracking-[-0.01em] text-ink">
-              {feature.title}
-            </h3>
-            <p className="mt-2 text-[14px] leading-[1.6] text-ink-soft">
-              {feature.body}
-            </p>
-            <div className="mt-5">{feature.visual}</div>
+            <div className={feature.highlight ? "min-w-0 flex-1" : undefined}>
+              <h3 className="text-[17px] font-bold tracking-[-0.01em] text-ink">
+                {feature.title}
+              </h3>
+              <p className="mt-2 text-[14px] leading-[1.6] text-ink-soft">
+                {feature.body}
+              </p>
+            </div>
+            <div
+              className={
+                feature.highlight ? "mt-5 shrink-0 sm:mt-0 sm:w-[360px]" : "mt-5"
+              }
+            >
+              {feature.visual}
+            </div>
           </li>
         ))}
       </ul>

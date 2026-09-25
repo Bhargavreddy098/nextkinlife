@@ -30,8 +30,8 @@ export function Hero() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-[1.62] text-ink-soft sm:text-[19px]">
-            Manage attendance, leave, payroll, work authorization, tasks, and
-            employee operations from one secure HR workspace.
+            Manage attendance, leave, payroll, invoicing, work authorization,
+            tasks, and employee operations from one secure HR workspace.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">

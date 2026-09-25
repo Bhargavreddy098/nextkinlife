@@ -207,3 +207,54 @@ export function EmployeesVisual() {
     </VisualShell>
   );
 }
+
+const INVOICE_ROWS = [
+  {
+    id: "INV-1042",
+    client: "Northwind Clinics",
+    amount: "$6,400",
+    status: "Paid",
+    tone: "positive" as const,
+  },
+  {
+    id: "INV-1041",
+    client: "Harbor Logistics",
+    amount: "$4,850",
+    status: "Pending",
+    tone: "brand" as const,
+  },
+  {
+    id: "INV-1040",
+    client: "Cedar & Co Studios",
+    amount: "$3,150",
+    status: "Overdue",
+    tone: "warn" as const,
+  },
+];
+
+export function InvoiceVisual() {
+  return (
+    <VisualShell>
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-[11px] font-semibold text-ink">Recent invoices</p>
+        <Chip tone="brand">$12,400 pending</Chip>
+      </div>
+      <ul className="mt-2 divide-y divide-line">
+        {INVOICE_ROWS.map((row) => (
+          <li key={row.id} className="flex items-center gap-2 py-1.5">
+            <span className="shrink-0 text-[10px] font-semibold text-ink">
+              {row.id}
+            </span>
+            <span className="hidden truncate text-[10px] text-muted sm:inline">
+              {row.client}
+            </span>
+            <span className="ml-auto shrink-0 text-[10px] font-bold text-ink">
+              {row.amount}
+            </span>
+            <Chip tone={row.tone}>{row.status}</Chip>
+          </li>
+        ))}
+      </ul>
+    </VisualShell>
+  );
+}
